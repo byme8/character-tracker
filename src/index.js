@@ -1,6 +1,6 @@
 // Save this file as `index.js`
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect} from 'react';
 import ReactDOM from 'react-dom/client';
 import {
   Container,
@@ -136,6 +136,12 @@ const App = () => {
   const [currentCharacterIndex, setCurrentCharacterIndex] = useState(0);
   const [characters, setCharacters] = useState([]);
   const [newCharacterName, setNewCharacterName] = useState('');
+  const inputRef = useRef(null); // Create a ref for the input field
+
+  // Focus on the input field when the component is mounted
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
   const addCharacter = () => {
     if (newCharacterName.trim()) {
@@ -207,6 +213,7 @@ const App = () => {
           <Box sx={{ display: 'flex', mb: 4 }}>
             <TextField
               fullWidth
+              inputRef={inputRef}
               label="Character Name"
               value={newCharacterName}
               onChange={(e) => setNewCharacterName(e.target.value)}
