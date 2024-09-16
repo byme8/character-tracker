@@ -186,10 +186,6 @@ const App = () => {
       case 'ArrowLeft':
         set(index - 1);
         break;
-      case 'Delete':
-      case 'Backspace':
-        removeCharacter(index);
-        break;
       default:
         break;
     }
